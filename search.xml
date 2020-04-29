@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>http和https</title>
+    <url>/2020/04/28/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="1、http和https的区别"><a href="#1、http和https的区别" class="headerlink" title="1、http和https的区别"></a>1、http和https的区别</h2><p>   http传输的数据是明文的(未加密)，而https协议室友http和ssl协议构建的可进行加密传输和身份<br>认证的网络协议，比http协议安全性更高。主要区别：</p>
+<ul>
+<li>一、https协议需要ca证书，费用较高</li>
+<li>二、http为明文传输，https为ssl加密传输协议(更安全)</li>
+<li>三、http的连接很简单，是无状态的；https协议是由ssl+http协议构建的可进行加密传输、身份认证的协议，更安全</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端基础</category>
+      </categories>
+      <tags>
+        <tag>路线</tag>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+</search>
