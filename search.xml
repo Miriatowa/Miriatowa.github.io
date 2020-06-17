@@ -2,8 +2,8 @@
 <search>
   <entry>
     <title>http和https</title>
-    <url>/2020/04/28/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="1、http和https的区别"><a href="#1、http和https的区别" class="headerlink" title="1、http和https的区别"></a>1、http和https的区别</h2><p>   http传输的数据是明文的(未加密)，而https协议室友http和ssl协议构建的可进行加密传输和身份<br>认证的网络协议，比http协议安全性更高。主要区别：</p>
+    <url>/2020/04/28/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E4%B8%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="1、http和https的区别"><a href="#1、http和https的区别" class="headerlink" title="1、http和https的区别"></a>1、http和https的区别</h2><p>   http传输的数据是明文的(未加密)，而https协议室友http和ssl协议构建的可进行加密传输和身份<br>认证的网络协议，比http协议安全性更高。主要区别：</p>
 <ul>
 <li>一、https协议需要ca证书，费用较高</li>
 <li>二、http为明文传输，https为ssl加密传输协议(更安全)</li>
@@ -16,6 +16,64 @@
       <tags>
         <tag>路线</tag>
         <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cookie、sessionStorage和localStorage的区别</title>
+    <url>/2020/04/29/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E4%BA%8C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="1、共同点"><a href="#1、共同点" class="headerlink" title="1、共同点"></a>1、共同点</h2><p>   都是保存在浏览器端，并且是同源的</p>
+<h2 id="2、不同点"><a href="#2、不同点" class="headerlink" title="2、不同点"></a>2、不同点</h2><h4 id="Cookie："><a href="#Cookie：" class="headerlink" title="Cookie："></a>Cookie：</h4><pre><code>cookie(存储量小,4k左右)数据始终在同源的http请求中携带,在浏览器和服务端来回传递,sessionStorage和localStorage仅在本地保存.</code></pre><h4 id="sessionStorage："><a href="#sessionStorage：" class="headerlink" title="sessionStorage："></a>sessionStorage：</h4><pre><code>仅在当前浏览器窗口关闭前有效，自然也不可能持久保持。</code></pre><h4 id="localStroage："><a href="#localStroage：" class="headerlink" title="localStroage："></a>localStroage：</h4><pre><code>始终有效，窗口或者浏览器关闭也一直保存;cookie只在窗口或者浏览器关闭之前有。localStorage和cooike在所有同源窗口都是共享的。</code></pre>]]></content>
+      <categories>
+        <category>前端基础</category>
+      </categories>
+      <tags>
+        <tag>路线</tag>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2020前端面试题（css）</title>
+    <url>/2020/06/01/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="1、css水平、垂直居中的写法，请至少写出4种？"><a href="#1、css水平、垂直居中的写法，请至少写出4种？" class="headerlink" title="1、css水平、垂直居中的写法，请至少写出4种？"></a>1、css水平、垂直居中的写法，请至少写出4种？</h2><blockquote>
+<p>这题考察的是css的基础知识是否全面，平时多加积累<br>   水平居中</p>
+</blockquote>
+<ol>
+<li>行内元素：<code>text-align: center</code></li>
+<li>块级元素：<code>margin：0 auto</code></li>
+<li>(<code>)
+position:absolute;
+left:50%;
+transform:translateX(-50%)
+(</code>)</li>
+<li>(<code>)
+display:flex;
+justify-content:center
+(</code>)<br>垂直居中<ol>
+<li>设置<code>line-height：height</code></li>
+<li>(<code>)
+position:absolute;
+top:50%;
+transform:translateY(-50%)
+(</code>)</li>
+<li>(<code>)
+display:table;
+display:table-cell
+vertical-align:middle
+(</code>)</li>
+<li>(<code>)
+display:flex;
+align-items:center
+(</code>)</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>前端基础</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
 </search>
