@@ -54,6 +54,16 @@
 </li>
 </ol>
 <h2 id="calc，support，nedia各自的含义及用法？"><a href="#calc，support，nedia各自的含义及用法？" class="headerlink" title="calc，support，nedia各自的含义及用法？"></a>calc，support，nedia各自的含义及用法？</h2><p>   @support主要用于检测浏览器是否支持CSS的某个属性，其实就是判断条件，如果支持<br>某个属性，你可以写一套样式;如果不支持某个样式，你也可以提供另外一套样式做替补<br>   calc()函数用于动态计算长度值。calc()函数支持”+”,”-“,”*”,”/“运算<br>   @media查询，你可以针对不同的媒体类型定义不同的样式</p>
+<h2 id="1rem、1em、1vh、1px、1rpx各自代表的含义？"><a href="#1rem、1em、1vh、1px、1rpx各自代表的含义？" class="headerlink" title="1rem、1em、1vh、1px、1rpx各自代表的含义？"></a>1rem、1em、1vh、1px、1rpx各自代表的含义？</h2><blockquote>
+<p>rem<br>    rem是全部的长度都相对于根元素<html>元素。通常做法是给html元素设置一个字体<br>大小，然后其他元素的长度单位就是rem。<br>em</p>
+</blockquote>
+<ul>
+<li>子元素字体大小的em是相对于父元素字体大小</li>
+<li>元素的width/height/padding/margin用em的话是相对于该元素的font-size<blockquote>
+<p>vw/vh<br>全称是Viewport Width和Viewport Height，视窗的宽度和高度，相当于屏幕宽度和<br>高度的1%，不过，处理宽度的时候%单位更合适，处理高度的话vh单位更好<br>px<br>px像素。相对长度单位。像素px是相对于显示器屏幕分辨率而言的<br>rpx<br>rpx 是微信小程序解决自适应屏幕尺寸的尺寸单位。微信小程序规定屏幕的宽度为750rpx。</p>
+</blockquote>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>前端基础</category>
