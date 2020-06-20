@@ -80,7 +80,7 @@
 </li>
 </ul>
 <h2 id="说说盒模型？"><a href="#说说盒模型？" class="headerlink" title="说说盒模型？"></a>说说盒模型？</h2><blockquote>
-<p>盒模型的组成是css中重要的基础知识，也是必考的基础知识   </p>
+<p>盒模型的组成是css中重要的基础知识，也是必考的基础知识</p>
 </blockquote>
 <p>   盒模型组成：<br>   *content：内容<br>   *padding：内边距<br>   *border：边框<br>   *margin：外边距<br>   由里向外，在标准的盒子模型中，width指content部分的宽度，box-sizing的<br> 默认属性content-box</p>
 <pre><code>box-sizing:content-box   W3C盒子模型
