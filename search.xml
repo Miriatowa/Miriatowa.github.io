@@ -62,9 +62,32 @@
 <li>子元素字体大小的em是相对于父元素字体大小</li>
 <li>元素的width/height/padding/margin用em的话是相对于该元素的font-size</li>
 </ul>
-<h2 id="说说盒模型？"><a href="#说说盒模型？" class="headerlink" title="说说盒模型？"></a>说说盒模型？</h2><h3 id="盒模型的组成是css中重要的基础知识，也是必考的基础知识"><a href="#盒模型的组成是css中重要的基础知识，也是必考的基础知识" class="headerlink" title="盒模型的组成是css中重要的基础知识，也是必考的基础知识"></a>盒模型的组成是css中重要的基础知识，也是必考的基础知识</h3><p>   盒模型组成：<br>   *content：内容<br>   *padding：内边距<br>   *border：边框<br>   *margin：外边距<br>   由里向外，在标准的盒子模型中，width指content部分的宽度，box-sizing的<br> 默认属性content-box</p>
-<pre><code>box-sizing:content-box   W3C盒子模型
-box-siezing:border-box   IE盒子模型</code></pre>]]></content>
+<h2 id="说说盒模型？"><a href="#说说盒模型？" class="headerlink" title="说说盒模型？"></a>说说盒模型？</h2><h3 id="盒模型的组成是css中重要的基础知识，也是必考的基础知识"><a href="#盒模型的组成是css中重要的基础知识，也是必考的基础知识" class="headerlink" title="盒模型的组成是css中重要的基础知识，也是必考的基础知识"></a>盒模型的组成是css中重要的基础知识，也是必考的基础知识</h3><p>   盒模型组成：<br>   *content：内容<br>   *padding：内边距<br>   *border：边框<br>   *margin：外边距<br>   由里向外，在标准的盒子模型中，width指content部分的宽度，box-sizing的<br> 默认属性content-box<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">box-sizing:content-box   W3C盒子模型</span><br><span class="line">box-siezing:border-box   IE盒子模型</span><br></pre></td></tr></table></figure></p>
+<h2 id="清除浮动的几种方式，及原理"><a href="#清除浮动的几种方式，及原理" class="headerlink" title="清除浮动的几种方式，及原理"></a>清除浮动的几种方式，及原理</h2><blockquote>
+<p>清除浮动简单，但这题要引出的是BFC   </p>
+</blockquote>
+<ul>
+<li><code>::after / &lt;br&gt;  /  clear:both</code></li>
+<li>创建父级 BFC（overflow:hidden）</li>
+<li>父级设置高度<blockquote>
+<p>BFC(块级格式化上下文)，是一个独立的渲染区域，让处于BFC内部的元素和外部的<br>元素相互隔离，使内外元素的定位不会相互影响</p>
+</blockquote>
+</li>
+</ul>
+<p>触发条件：</p>
+<ul>
+<li>根元素</li>
+<li><code>position：absolute/fixed</code></li>
+<li><code>display；inline-block/table</code></li>
+<li>float元素</li>
+<li>overflow ！== visiable<br>规则：</li>
+<li>属于同一个BFC的两个相邻Box垂直排列</li>
+<li>属于同一个BFC的两个相邻Box的margin会发生重叠</li>
+<li>BFC的区域不会与float的元素区域重叠</li>
+<li>计算BFC的高度时，浮动子元素也参与计算</li>
+<li>文字层不会被浮动层覆盖，环绕于周围</li>
+</ul>
+]]></content>
       <categories>
         <category>前端基础</category>
       </categories>
