@@ -33,7 +33,7 @@
   </entry>
   <entry>
     <title>2020前端面试题（css篇）</title>
-    <url>/2020/06/01/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <url>/2020/06/01/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(CSS)/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="css水平、垂直居中的写法，请至少写出4种？"><a href="#css水平、垂直居中的写法，请至少写出4种？" class="headerlink" title="css水平、垂直居中的写法，请至少写出4种？"></a>css水平、垂直居中的写法，请至少写出4种？</h2><blockquote>
 <p>这题考察的是css的基础知识是否全面，平时多加积累</p>
 </blockquote>
