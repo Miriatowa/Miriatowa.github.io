@@ -15,7 +15,7 @@
   </entry>
   <entry>
     <title>2020前端面试题（css篇）</title>
-    <url>/2020/06/01/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(CSS)/</url>
+    <url>/2020/04/01/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(CSS)/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="css水平、垂直居中的写法，请至少写出4种？"><a href="#css水平、垂直居中的写法，请至少写出4种？" class="headerlink" title="css水平、垂直居中的写法，请至少写出4种？"></a>css水平、垂直居中的写法，请至少写出4种？</h2><blockquote>
 <p>这题考察的是css的基础知识是否全面，平时多加积累</p>
 </blockquote>
@@ -95,7 +95,7 @@
   </entry>
   <entry>
     <title>日常问题</title>
-    <url>/2020/04/01/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <url>/2020/03/01/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="文本溢出显示省略号"><a href="#文本溢出显示省略号" class="headerlink" title="文本溢出显示省略号"></a>文本溢出显示省略号</h2><p>  ###单行文本<br>  <figure class="highlight plain"><figcaption><span>hidden;</span></figcaption><table><tr><td class="code"><pre><span class="line">text-overflow:ellipsis;</span><br><span class="line">white-space: nowrap;</span><br></pre></td></tr></table></figure><br>  ###多行文本<br>  <figure class="highlight plain"><figcaption><span>-webkit-box;</span></figcaption><table><tr><td class="code"><pre><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">-webkit-line-clamp: 3;</span><br><span class="line">overflow: hidden;</span><br></pre></td></tr></table></figure></p>
 <h2 id="小程序input、textarea层级穿透问题"><a href="#小程序input、textarea层级穿透问题" class="headerlink" title="小程序input、textarea层级穿透问题"></a>小程序input、textarea层级穿透问题</h2><p>当页面中有input、textarea时，底部提交按钮<code>position：fixed</code>悬浮时，placeholder<br>会穿透到提交按钮的上方，设置z-index在真机上无效<br><img src="https://ae01.alicdn.com/kf/H4e304773bea3445085a8e68758bf6175d.jpg" alt="RUNOOB 图标" loading="lazy"></p>
 <p>解决方法：</p>
@@ -105,7 +105,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>醒目</category>
+        <category>前端</category>
       </categories>
       <tags>
         <tag>前端</tag>
