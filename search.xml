@@ -115,7 +115,10 @@ call后面的参数与say方法中是一一对应的，而apply的第二个参�
 <li><p>其中一点上面已经有体现了，就是被引用的私有变量不能被销毁，增大了内存消耗，造成<br>内存泄漏，解决方法是可以在使用完变量后手动为它赋值为null；</p>
 </li>
 <li><p>其次由于闭包涉及跨域访问，所以会导致性能损失，我们可以通过把跨作用域变量存储在局<br>部变量中，然后直接访问局部变量，来减轻对执行速度的影响</p>
-</li>
+<h2 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h2><h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><p>如果是对象或者数组，就会只拷贝对象和数组的引用，这样我们无论在新旧数组进行了修改，两者都会发生变化。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr&#x3D;[[11,22],[33,44]]</span><br><span class="line">var arrTwo&#x3D;[]</span><br><span class="line">for(var i&#x3D;0;i&lt;arr.length;i++)&#123;</span><br><span class="line">	arr[i]&#x3D;arrTwo[i]</span><br><span class="line">&#125;</span><br><span class="line">arr[0][0]&#x3D;55</span><br><span class="line">console.log(arr1)         [[55,22],[33,44]]</span><br><span class="line">console.log(arr2)		  [[55,22],[33,44]]</span><br></pre></td></tr></table></figure>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><p>深拷贝就是指完全的拷贝一个对象，即使嵌套了对象，两者也相互分离，修改一个对象的属性，也不会影响另一个。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr&#x3D;[[11,22],[33,44]]</span><br><span class="line">function deepCopy(arr)&#123;</span><br><span class="line"> var tempArr&#x3D;[]</span><br><span class="line"> if(arr instanceof Array)&#123;</span><br><span class="line">  for(var i&#x3D;0;i&lt;arr.length;i++)&#123;</span><br><span class="line">	  var res&#x3D;deepCopy(arr)[i]</span><br><span class="line">	  tempArr[i]&#x3D;res</span><br><span class="line">  &#125;</span><br><span class="line">  return tempArr</span><br><span class="line"> &#125;else&#123;</span><br><span class="line">  return arr</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">arr[0][0]&#x3D;55</span><br><span class="line">var arr2&#x3D;deepCopy(arr1)</span><br><span class="line">console.log(arr1)			 [[55,22],[33,44]]</span><br><span class="line">console.log(arr2)			 [[11,22],[33,44]]</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
