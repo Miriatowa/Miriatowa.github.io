@@ -14,8 +14,115 @@
       </tags>
   </entry>
   <entry>
+    <title>日常问题</title>
+    <url>/2020/03/01/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="文本溢出显示省略号"><a href="#文本溢出显示省略号" class="headerlink" title="文本溢出显示省略号"></a>文本溢出显示省略号</h2><p>  ###单行文本<br>  <figure class="highlight plain"><figcaption><span>hidden;</span></figcaption><table><tr><td class="code"><pre><span class="line">text-overflow:ellipsis;</span><br><span class="line">white-space: nowrap;</span><br></pre></td></tr></table></figure><br>  ###多行文本<br>  <figure class="highlight plain"><figcaption><span>-webkit-box;</span></figcaption><table><tr><td class="code"><pre><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">-webkit-line-clamp: 3;</span><br><span class="line">overflow: hidden;</span><br></pre></td></tr></table></figure></p>
+<h2 id="小程序input、textarea层级穿透问题"><a href="#小程序input、textarea层级穿透问题" class="headerlink" title="小程序input、textarea层级穿透问题"></a>小程序input、textarea层级穿透问题</h2><p>当页面中有input、textarea时，底部提交按钮<code>position：fixed</code>悬浮时，placeholder<br>会穿透到提交按钮的上方，设置z-index在真机上无效<br><img src="https://ae01.alicdn.com/kf/H4e304773bea3445085a8e68758bf6175d.jpg" alt="RUNOOB 图标" loading="lazy"></p>
+<p>解决方法：</p>
+<ul>
+<li>使用if，当触发按钮时隐藏textarea或者input组件，需求完成时在显示input或者textarea</li>
+<li>使用cover-view和cover-image组件代替view、image，cover-view和cover-image组件可以<br>覆盖在部分原生组件上面<h2 id="小程序自定义组件使用动画的坑"><a href="#小程序自定义组件使用动画的坑" class="headerlink" title="小程序自定义组件使用动画的坑"></a>小程序自定义组件使用动画的坑</h2>主包内需要在onReady里面去wx.createAnimation么，但是在自定义组件中要去created中<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">	var animation &#x3D; uni.createAnimation(&#123;</span><br><span class="line">			transformOrigin: &quot;100% 80%&quot;,</span><br><span class="line">	  		duration: 1000,</span><br><span class="line">	   		timingFunction: &#39;ease&#39;,</span><br><span class="line">	&#125;)</span><br><span class="line">	</span><br><span class="line">	this.animation &#x3D; animation</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="uniapp中js如何动态修改css属性"><a href="#uniapp中js如何动态修改css属性" class="headerlink" title="uniapp中js如何动态修改css属性"></a>uniapp中js如何动态修改css属性</h2><blockquote>
+<p>为节约性能，uniapp将Class与Style的表达式通过compiler硬编码到uni-app中，支持语法和转换效果如下：</p>
+</blockquote>
+<h3 id="class支持语法"><a href="#class支持语法" class="headerlink" title="class支持语法:"></a>class支持语法:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view :class&#x3D;&quot;&#123; active: isActive &#125;&quot;&gt;111&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;static&quot; v-bind:class&#x3D;&quot;&#123; active: isActive, &#39;text-danger&#39;: hasError &#125;&quot;&gt;222&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;static&quot; :class&#x3D;&quot;[activeClass, errorClass]&quot;&gt;333&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;static&quot; v-bind:class&#x3D;&quot;[isActive ? activeClass : &#39;&#39;, errorClass]&quot;&gt;444&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;static&quot; v-bind:class&#x3D;&quot;[&#123; active: isActive &#125;, errorClass]&quot;&gt;555&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="style支持语法"><a href="#style支持语法" class="headerlink" title="style支持语法"></a>style支持语法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view v-bind:style&#x3D;&quot;&#123; color: activeColor, fontSize: fontSize + &#39;px&#39; &#125;&quot;&gt;666&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view v-bind:style&#x3D;&quot;[&#123; color: activeColor, fontSize: fontSize + &#39;px&#39; &#125;]&quot;&gt;777&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="页面中怎么滚动到指定元素"><a href="#页面中怎么滚动到指定元素" class="headerlink" title="页面中怎么滚动到指定元素"></a>页面中怎么滚动到指定元素</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">uni.createSelectorQuery().select(&quot;.app&quot;).boundingClientRect(data&#x3D;&gt;&#123;&#x2F;&#x2F;目标节点</span><br><span class="line">　　uni.createSelectorQuery().select(&quot;.al&quot;).boundingClientRect((res)&#x3D;&gt;&#123;&#x2F;&#x2F;最外层盒子节点</span><br><span class="line">　　　　uni.pageScrollTo(&#123;</span><br><span class="line">　　　　　　duration:0,&#x2F;&#x2F;过渡时间必须为0，uniapp bug，否则运行到手机会报错</span><br><span class="line">　　　　　　scrollTop:res.top - data.top,&#x2F;&#x2F;滚动到实际距离是元素距离顶部的距离减去最外层盒子的滚动距离</span><br><span class="line">　　　　&#125;)</span><br><span class="line">　　&#125;).exec()</span><br><span class="line">&#125;).exec();</span><br></pre></td></tr></table></figure>
+<h2 id="for循环遍历splice删除元素"><a href="#for循环遍历splice删除元素" class="headerlink" title="for循环遍历splice删除元素"></a>for循环遍历splice删除元素</h2><h3 id="遇到的情况："><a href="#遇到的情况：" class="headerlink" title="遇到的情况："></a>遇到的情况：</h3><img src="https://yanxuan.nosdn.127.net/1f6257712afc155b08a422776e591673.jpg" alt="RUNOOB 图标" loading="lazy"><br><img src="https://yanxuan.nosdn.127.net/c36da88230feb8a1fab804ecd7ab916a.jpg" alt="RUNOOB 图标" loading="lazy"><br>使用i++遍历不全，i–却可以<h3 id="最后解决方法："><a href="#最后解决方法：" class="headerlink" title="最后解决方法："></a>最后解决方法：</h3>查询了菜鸟教程的文档，splice方法会改变原数组，使用i++遍历的话，原数组的下标已经发生了改变，<br>所以出现了遍历不全的现象，而i–的话从后往前遍历，原数组的下标并没有改变，所以可以遍历完数组<h2 id="uni开发checkbox复选框全选和全不选功能实现"><a href="#uni开发checkbox复选框全选和全不选功能实现" class="headerlink" title="uni开发checkbox复选框全选和全不选功能实现"></a>uni开发checkbox复选框全选和全不选功能实现</h2><h3 id="遇到情况"><a href="#遇到情况" class="headerlink" title="遇到情况"></a>遇到情况</h3><img src="https://yanxuan.nosdn.127.net/534bade0f28bb1338113ae11ad59fcf6.png" alt="RUNOOB 图标" loading="lazy"><h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3>遍历数组，给每条数据加上一个check=false属性，全选按钮通过改变这个属性的值来实现全选和全部选，<br>具体代码如下：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">html代码</span><br><span class="line">	&lt;view class&#x3D;&quot;itemMid&quot;&gt;</span><br><span class="line">		&lt;checkbox-group @change&#x3D;&quot;singleSelect&quot;&gt;</span><br><span class="line">		&lt;view class&#x3D;&quot;billItem&quot; v-for&#x3D;&quot;(item,index) in courseCollectionArr&quot; :key&#x3D;&quot;index&quot; &gt;</span><br><span class="line">			&lt;checkbox :value&#x3D;&quot;item.id&quot; :checked&#x3D;&quot;item.check&quot; :hidden&#x3D;&quot;!isEdit&quot; &#x2F;&gt;</span><br><span class="line">			&lt;billItem :billItem&#x3D;&quot;item&quot; &gt;&lt;&#x2F;billItem&gt;</span><br><span class="line">		&lt;&#x2F;view&gt;</span><br><span class="line">		&lt;&#x2F;checkbox-group&gt;</span><br><span class="line">	&lt;&#x2F;view&gt;</span><br><span class="line">	&lt;view class&#x3D;&quot;itemBottom&quot;&gt;</span><br><span class="line">		&lt;view class&#x3D;&quot;bottomBar&quot; :hidden&#x3D;&quot;!isEdit&quot;&gt;</span><br><span class="line">			&lt;checkbox-group @change&#x3D;&quot;allSelect&quot;&gt;&lt;checkbox value&#x3D;&quot;all&quot; :checked&#x3D;&quot;checkkAll&quot;&gt;全选&lt;&#x2F;checkbox&gt;&lt;&#x2F;checkbox-group&gt;</span><br><span class="line">			&lt;button type&#x3D;&quot;warn&quot; class&#x3D;&quot;cancelBtn&quot;&gt;取消收藏&lt;&#x2F;button&gt;</span><br><span class="line">		&lt;&#x2F;view&gt;</span><br><span class="line">	&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">js代码</span><br><span class="line">	data() &#123;</span><br><span class="line">		return &#123;</span><br><span class="line">			courseCollectionArr:[],</span><br><span class="line">			selectGoods:true,</span><br><span class="line">			selectStore:false,</span><br><span class="line">			isEdit:false,</span><br><span class="line">			cancelId:[],</span><br><span class="line">			checkkAll:false,</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	 &lt;!-- 选择单个 --&gt;</span><br><span class="line">		singleSelect(e)&#123;</span><br><span class="line">			this.cancelId&#x3D;e.detail.value</span><br><span class="line">			console.log(this.cancelId)</span><br><span class="line">		&#125;,</span><br><span class="line">		&lt;!-- 全选 --&gt;</span><br><span class="line">		allSelect(e)&#123;</span><br><span class="line">			if(e.detail.value&#x3D;&#x3D;&quot;all&quot;)&#123;</span><br><span class="line">				this.ckAll &#x3D; true;</span><br><span class="line">				this.courseCollectionArr.forEach((item)&#x3D;&gt;&#123;</span><br><span class="line">					item.check &#x3D; this.ckAll</span><br><span class="line">					var idStr&#x3D;item.id.toString()</span><br><span class="line">					&#x2F;&#x2F; 去重</span><br><span class="line">					if(this.cancelId.includes(idStr))&#123;</span><br><span class="line">						console.log(&quot;重复id&quot;)</span><br><span class="line">					&#125;else&#123;</span><br><span class="line">						this.cancelId.push(idStr)</span><br><span class="line">					&#125;</span><br><span class="line">					console.log(this.cancelId)</span><br><span class="line">				&#125;)</span><br><span class="line">				</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				this.ckAll &#x3D; false;</span><br><span class="line">				this.courseCollectionArr.map(item &#x3D;&gt; item.check &#x3D; this.ckAll);</span><br><span class="line">				this.cancelId&#x3D;[]</span><br><span class="line">				console.log(this.cancelId)</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端项目</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2020前端面试题（html篇）</title>
+    <url>/2020/06/24/%E9%9D%A2%E8%AF%95%E9%A2%98(HTML)/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="说一下标签的用法"><a href="#说一下标签的用法" class="headerlink" title="说一下标签的用法"></a>说一下<label>标签的用法</h2><pre><code>label标签主要是方便鼠标点击使用，扩大可点击范围，增强用户体验</code></pre><h2 id="http和https的区别"><a href="#http和https的区别" class="headerlink" title="http和https的区别"></a>http和https的区别</h2><p>   http传输的数据是明文的(未加密)，而https协议室友http和ssl协议构建的可进行加密传输和身份<br>认证的网络协议，比http协议安全性更高。主要区别：</p>
+<ul>
+<li>一、https协议需要ca证书，费用较高</li>
+<li>二、http为明文传输，https为ssl加密传输协议(更安全)</li>
+<li>三、http的连接很简单，是无状态的；https协议是由ssl+http协议构建的可进行加密传输、身份认证的协议，更安全</li>
+</ul>
+<h2 id="H5新增的的元素和删除的元素"><a href="#H5新增的的元素和删除的元素" class="headerlink" title="H5新增的的元素和删除的元素"></a>H5新增的的元素和删除的元素</h2><p>####新增<br>|标签            |描述                                                            |<br>|<article>        |定义页面独立的内容区域。                                        |<br>|<aside>        |定义页面的侧边栏内容。                                            |<br>|<bdi>            |允许您设置一段文本，使其脱离其父元素的文本方向设置。            |<br>|<command>        |定义命令按钮，比如单选按钮、复选框或按钮                        |<br>|<details>        |用于描述文档或文档某个部分的细节                                |<br>|<dialog>        |定义对话框，比如提示框                                            |<br>|<summary>        |标签包含 details 元素的标题                                    |<br>|<figure>        |规定独立的流内容（图像、图表、照片、代码等等）。                |<br>|<figcaption>    |定义 <figure> 元素的标题                                        |<br>|<footer>        |定义 section 或 document 的页脚。                                |<br>|<header>        |定义了文档的头部区域                                            |<br>|<mark>            |定义带有记号的文本。                                            |<br>|<meter>        |定义度量衡。仅用于已知最大和最小值的度量。                        |<br>|<nav>            |定义导航链接的部分。                                            |<br>|<progress>        |定义任何类型的任务的进度。                                        |<br>|<ruby>            |定义 ruby 注释（中文注音或字符）。                                |<br>|<rt>            |定义字符（中文注音或字符）的解释或发音。                        |<br>|<rp>            |在 ruby 注释中使用，定义不支持 ruby 元素的浏览器所显示的内容。    |<br>|<section>        |定义文档中的节（section、区段）。                                |<br>|<time>            |定义日期或时间。                                                |<br>|<wbr>            |规定在文本中的何处适合添加换行符。                                |<br>####移除<br>以下的 HTML 4.01 元素在HTML5中已经被删除:<br><acronym><br><applet></p>
+<basefont>
+<big>
+<center>
+<dir>
+<font>
+<frame>
+<frameset>
+<noframes>
+<strike>]]></content>
+      <categories>
+        <category>前端基础</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+        <tag>前端</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2020前端面试题（js篇）</title>
+    <url>/2020/06/01/%E9%9D%A2%E8%AF%95%E9%A2%98(JS)/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="遍历A节点的父节点的所有子节点"><a href="#遍历A节点的父节点的所有子节点" class="headerlink" title="遍历A节点的父节点的所有子节点"></a>遍历A节点的父节点的所有子节点</h2><blockquote>
+<p>这题考察原生的js操作dom，属于非常简单的基础题，但长时间使用mvvm框架，可能会忘记</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	var b&#x3D;document.getElementById(&quot;a&quot;).parentNode.children;</span><br><span class="line">	consloe.log(b)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="javascript中apply、call和bind的区别"><a href="#javascript中apply、call和bind的区别" class="headerlink" title="javascript中apply、call和bind的区别"></a>javascript中apply、call和bind的区别</h2><blockquote>
+<p>在JS中，这三者都是用来改变函数的this对象的指向的，他们有什么样的区别呢</p>
+</blockquote>
+<h3 id="相似的地方"><a href="#相似的地方" class="headerlink" title="相似的地方"></a>相似的地方</h3><ol>
+<li>都是用来改变函数的this对象的指向的。</li>
+<li>第一个参数都是this要指向的对象。</li>
+<li>都可以利用后续参数传参。<h3 id="区别的地方"><a href="#区别的地方" class="headerlink" title="区别的地方"></a>区别的地方</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  var person &#x3D; &#123;</span><br><span class="line">                         name : &quot;小王&quot;,</span><br><span class="line">                         gender : &quot;男&quot;,</span><br><span class="line">                         age : 24,</span><br><span class="line">                         say : function(school,grade) &#123;</span><br><span class="line">                                 alert(this.name + &quot; , &quot; + this.gender + &quot; ,今年&quot; + this.age + &quot; ,在&quot; + school + &quot;上&quot; + grade);                                </span><br><span class="line">                         &#125;</span><br><span class="line">                 &#125;</span><br><span class="line">   var student &#x3D; &#123;</span><br><span class="line">           name : &quot;小红&quot;,</span><br><span class="line">           gender : &quot;女&quot;,</span><br><span class="line">           age : 18</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">person.say.call(student,&quot;实验小学&quot;,&quot;六年级&quot;)</span><br><span class="line">person.say.apply(student,[&quot;实验小学&quot;,&quot;六年级&quot;])</span><br><span class="line">person.say.bind(student)(&quot;实验小学&quot;,&quot;六年级&quot;)</span><br></pre></td></tr></table></figure>
+call后面的参数与say方法中是一一对应的，而apply的第二个参数是一个数组，<br>数组中的元素是和say方法中一一对应的，这就是两者最大的区别。但是由于bind返<br>回的仍然是一个函数，所以我们还可以在调用的时候再进行传参。<h2 id="对于闭包函数的理解"><a href="#对于闭包函数的理解" class="headerlink" title="对于闭包函数的理解"></a>对于闭包函数的理解</h2><blockquote>
+<p>《Javascript高级程序设计》上对闭包的定义是：有权限访问另一个函数作用域中的变量的函数。<br>js作用域环境中访问变量的权利是由内向外的，内部作用域可以获得当前作用域下的变量并且可以获<br>得当前包含当前作用域的外层作用域下的变量,那么我们想在一个函数内部也有限权访问另一个函数内部<br>的变量该怎么办呢？闭包就是用来解决这一需求的，闭包的本质就是在一个函数内部创建另一个函数。</p>
+</blockquote>
+<h3 id="闭包的结构"><a href="#闭包的结构" class="headerlink" title="闭包的结构"></a>闭包的结构</h3></li>
+</ol>
+<ul>
+<li>函数嵌套函数</li>
+<li>外层函数有局部变量</li>
+<li>里层函数使用了外层函数的局部变量</li>
+<li>里层函数可被反复调用<h3 id="闭包实例"><a href="#闭包实例" class="headerlink" title="闭包实例"></a>闭包实例</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function closures()&#123;</span><br><span class="line"> var name&#x3D;&quot;closureFn&quot;</span><br><span class="line"> function callFn()&#123;</span><br><span class="line">  alert(&#96;我是$&#123;name&#125;函数&#96;)</span><br><span class="line"> &#125;</span><br><span class="line"> return callFn  </span><br><span class="line">&#125; </span><br><span class="line">var fn&#x3D;closures()</span><br><span class="line">console.log(fn())</span><br></pre></td></tr></table></figure>
+<h3 id="总结闭包的好处与坏处"><a href="#总结闭包的好处与坏处" class="headerlink" title="总结闭包的好处与坏处"></a>总结闭包的好处与坏处</h3><h4 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h4></li>
+</ul>
+<ul>
+<li><p>保护函数内的变量安全 ，实现封装，防止变量流入其他环境发生命名冲突</p>
+</li>
+<li><p>在内存中维持一个变量，可以做缓存（但使用多了同时也是一项缺点，消耗内存）</p>
+</li>
+<li><p>匿名自执行函数可以减少内存消耗</p>
+<h4 id="坏处"><a href="#坏处" class="headerlink" title="坏处"></a>坏处</h4></li>
+<li><p>其中一点上面已经有体现了，就是被引用的私有变量不能被销毁，增大了内存消耗，造成<br>内存泄漏，解决方法是可以在使用完变量后手动为它赋值为null；</p>
+</li>
+<li><p>其次由于闭包涉及跨域访问，所以会导致性能损失，我们可以通过把跨作用域变量存储在局<br>部变量中，然后直接访问局部变量，来减轻对执行速度的影响</p>
+<h2 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h2><h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><p>如果是对象或者数组，就会只拷贝对象和数组的引用，这样我们无论在新旧数组进行了修改，两者都会发生变化。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr&#x3D;[[11,22],[33,44]]</span><br><span class="line">var arrTwo&#x3D;[]</span><br><span class="line">for(var i&#x3D;0;i&lt;arr.length;i++)&#123;</span><br><span class="line">	arr[i]&#x3D;arrTwo[i]</span><br><span class="line">&#125;</span><br><span class="line">arr[0][0]&#x3D;55</span><br><span class="line">console.log(arr1)         [[55,22],[33,44]]</span><br><span class="line">console.log(arr2)		  [[55,22],[33,44]]</span><br></pre></td></tr></table></figure>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><p>深拷贝就是指完全的拷贝一个对象，即使嵌套了对象，两者也相互分离，修改一个对象的属性，也不会影响另一个。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr&#x3D;[[11,22],[33,44]]</span><br><span class="line">function deepCopy(arr)&#123;</span><br><span class="line"> var tempArr&#x3D;[]</span><br><span class="line"> if(arr instanceof Array)&#123;</span><br><span class="line">  for(var i&#x3D;0;i&lt;arr.length;i++)&#123;</span><br><span class="line">	  var res&#x3D;deepCopy(arr)[i]</span><br><span class="line">	  tempArr[i]&#x3D;res</span><br><span class="line">  &#125;</span><br><span class="line">  return tempArr</span><br><span class="line"> &#125;else&#123;</span><br><span class="line">  return arr</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">arr[0][0]&#x3D;55</span><br><span class="line">var arr2&#x3D;deepCopy(arr1)</span><br><span class="line">console.log(arr1)			 [[55,22],[33,44]]</span><br><span class="line">console.log(arr2)			 [[11,22],[33,44]]</span><br></pre></td></tr></table></figure>
+<h2 id="组合和继承的理解"><a href="#组合和继承的理解" class="headerlink" title="组合和继承的理解"></a>组合和继承的理解</h2></li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端基础</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2020前端面试题（css篇）</title>
-    <url>/2020/04/01/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(CSS)/</url>
+    <url>/2020/04/01/%E9%9D%A2%E8%AF%95%E9%A2%98(CSS)/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="css水平、垂直居中的写法，请至少写出4种？"><a href="#css水平、垂直居中的写法，请至少写出4种？" class="headerlink" title="css水平、垂直居中的写法，请至少写出4种？"></a>css水平、垂直居中的写法，请至少写出4种？</h2><blockquote>
 <p>这题考察的是css的基础知识是否全面，平时多加积累</p>
 </blockquote>
@@ -76,104 +183,6 @@
       <tags>
         <tag>面试题</tag>
         <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2020前端面试题（js篇）</title>
-    <url>/2020/06/01/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(JS)/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="遍历A节点的父节点的所有子节点"><a href="#遍历A节点的父节点的所有子节点" class="headerlink" title="遍历A节点的父节点的所有子节点"></a>遍历A节点的父节点的所有子节点</h2><blockquote>
-<p>这题考察原生的js操作dom，属于非常简单的基础题，但长时间使用mvvm框架，可能会忘记</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	var b&#x3D;document.getElementById(&quot;a&quot;).parentNode.children;</span><br><span class="line">	consloe.log(b)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="javascript中apply、call和bind的区别"><a href="#javascript中apply、call和bind的区别" class="headerlink" title="javascript中apply、call和bind的区别"></a>javascript中apply、call和bind的区别</h2><blockquote>
-<p>在JS中，这三者都是用来改变函数的this对象的指向的，他们有什么样的区别呢</p>
-</blockquote>
-<h3 id="相似的地方"><a href="#相似的地方" class="headerlink" title="相似的地方"></a>相似的地方</h3><ol>
-<li>都是用来改变函数的this对象的指向的。</li>
-<li>第一个参数都是this要指向的对象。</li>
-<li>都可以利用后续参数传参。<h3 id="区别的地方"><a href="#区别的地方" class="headerlink" title="区别的地方"></a>区别的地方</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  var person &#x3D; &#123;</span><br><span class="line">                         name : &quot;小王&quot;,</span><br><span class="line">                         gender : &quot;男&quot;,</span><br><span class="line">                         age : 24,</span><br><span class="line">                         say : function(school,grade) &#123;</span><br><span class="line">                                 alert(this.name + &quot; , &quot; + this.gender + &quot; ,今年&quot; + this.age + &quot; ,在&quot; + school + &quot;上&quot; + grade);                                </span><br><span class="line">                         &#125;</span><br><span class="line">                 &#125;</span><br><span class="line">   var student &#x3D; &#123;</span><br><span class="line">           name : &quot;小红&quot;,</span><br><span class="line">           gender : &quot;女&quot;,</span><br><span class="line">           age : 18</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">person.say.call(student,&quot;实验小学&quot;,&quot;六年级&quot;)</span><br><span class="line">person.say.apply(student,[&quot;实验小学&quot;,&quot;六年级&quot;])</span><br><span class="line">person.say.bind(student)(&quot;实验小学&quot;,&quot;六年级&quot;)</span><br></pre></td></tr></table></figure>
-call后面的参数与say方法中是一一对应的，而apply的第二个参数是一个数组，<br>数组中的元素是和say方法中一一对应的，这就是两者最大的区别。但是由于bind返<br>回的仍然是一个函数，所以我们还可以在调用的时候再进行传参。<h2 id="对于闭包函数的理解"><a href="#对于闭包函数的理解" class="headerlink" title="对于闭包函数的理解"></a>对于闭包函数的理解</h2><blockquote>
-<p>《Javascript高级程序设计》上对闭包的定义是：有权限访问另一个函数作用域中的变量的函数。<br>js作用域环境中访问变量的权利是由内向外的，内部作用域可以获得当前作用域下的变量并且可以获<br>得当前包含当前作用域的外层作用域下的变量,那么我们想在一个函数内部也有限权访问另一个函数内部<br>的变量该怎么办呢？闭包就是用来解决这一需求的，闭包的本质就是在一个函数内部创建另一个函数。</p>
-</blockquote>
-<h3 id="闭包的结构"><a href="#闭包的结构" class="headerlink" title="闭包的结构"></a>闭包的结构</h3></li>
-</ol>
-<ul>
-<li>函数嵌套函数</li>
-<li>外层函数有局部变量</li>
-<li>里层函数使用了外层函数的局部变量</li>
-<li>里层函数可被反复调用<h3 id="闭包实例"><a href="#闭包实例" class="headerlink" title="闭包实例"></a>闭包实例</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function closures()&#123;</span><br><span class="line"> var name&#x3D;&quot;closureFn&quot;</span><br><span class="line"> function callFn()&#123;</span><br><span class="line">  alert(&#96;我是$&#123;name&#125;函数&#96;)</span><br><span class="line"> &#125;</span><br><span class="line"> return callFn  </span><br><span class="line">&#125; </span><br><span class="line">var fn&#x3D;closures()</span><br><span class="line">console.log(fn())</span><br></pre></td></tr></table></figure>
-<h3 id="总结闭包的好处与坏处"><a href="#总结闭包的好处与坏处" class="headerlink" title="总结闭包的好处与坏处"></a>总结闭包的好处与坏处</h3><h4 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h4></li>
-</ul>
-<ul>
-<li><p>保护函数内的变量安全 ，实现封装，防止变量流入其他环境发生命名冲突</p>
-</li>
-<li><p>在内存中维持一个变量，可以做缓存（但使用多了同时也是一项缺点，消耗内存）</p>
-</li>
-<li><p>匿名自执行函数可以减少内存消耗</p>
-<h4 id="坏处"><a href="#坏处" class="headerlink" title="坏处"></a>坏处</h4></li>
-<li><p>其中一点上面已经有体现了，就是被引用的私有变量不能被销毁，增大了内存消耗，造成<br>内存泄漏，解决方法是可以在使用完变量后手动为它赋值为null；</p>
-</li>
-<li><p>其次由于闭包涉及跨域访问，所以会导致性能损失，我们可以通过把跨作用域变量存储在局<br>部变量中，然后直接访问局部变量，来减轻对执行速度的影响</p>
-<h2 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h2><h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><p>如果是对象或者数组，就会只拷贝对象和数组的引用，这样我们无论在新旧数组进行了修改，两者都会发生变化。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr&#x3D;[[11,22],[33,44]]</span><br><span class="line">var arrTwo&#x3D;[]</span><br><span class="line">for(var i&#x3D;0;i&lt;arr.length;i++)&#123;</span><br><span class="line">	arr[i]&#x3D;arrTwo[i]</span><br><span class="line">&#125;</span><br><span class="line">arr[0][0]&#x3D;55</span><br><span class="line">console.log(arr1)         [[55,22],[33,44]]</span><br><span class="line">console.log(arr2)		  [[55,22],[33,44]]</span><br></pre></td></tr></table></figure>
-<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><p>深拷贝就是指完全的拷贝一个对象，即使嵌套了对象，两者也相互分离，修改一个对象的属性，也不会影响另一个。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr&#x3D;[[11,22],[33,44]]</span><br><span class="line">function deepCopy(arr)&#123;</span><br><span class="line"> var tempArr&#x3D;[]</span><br><span class="line"> if(arr instanceof Array)&#123;</span><br><span class="line">  for(var i&#x3D;0;i&lt;arr.length;i++)&#123;</span><br><span class="line">	  var res&#x3D;deepCopy(arr)[i]</span><br><span class="line">	  tempArr[i]&#x3D;res</span><br><span class="line">  &#125;</span><br><span class="line">  return tempArr</span><br><span class="line"> &#125;else&#123;</span><br><span class="line">  return arr</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">arr[0][0]&#x3D;55</span><br><span class="line">var arr2&#x3D;deepCopy(arr1)</span><br><span class="line">console.log(arr1)			 [[55,22],[33,44]]</span><br><span class="line">console.log(arr2)			 [[11,22],[33,44]]</span><br></pre></td></tr></table></figure>
-<h2 id="组合和继承的理解"><a href="#组合和继承的理解" class="headerlink" title="组合和继承的理解"></a>组合和继承的理解</h2></li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端基础</category>
-      </categories>
-      <tags>
-        <tag>面试题</tag>
-        <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>日常问题</title>
-    <url>/2020/03/01/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="文本溢出显示省略号"><a href="#文本溢出显示省略号" class="headerlink" title="文本溢出显示省略号"></a>文本溢出显示省略号</h2><p>  ###单行文本<br>  <figure class="highlight plain"><figcaption><span>hidden;</span></figcaption><table><tr><td class="code"><pre><span class="line">text-overflow:ellipsis;</span><br><span class="line">white-space: nowrap;</span><br></pre></td></tr></table></figure><br>  ###多行文本<br>  <figure class="highlight plain"><figcaption><span>-webkit-box;</span></figcaption><table><tr><td class="code"><pre><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">-webkit-line-clamp: 3;</span><br><span class="line">overflow: hidden;</span><br></pre></td></tr></table></figure></p>
-<h2 id="小程序input、textarea层级穿透问题"><a href="#小程序input、textarea层级穿透问题" class="headerlink" title="小程序input、textarea层级穿透问题"></a>小程序input、textarea层级穿透问题</h2><p>当页面中有input、textarea时，底部提交按钮<code>position：fixed</code>悬浮时，placeholder<br>会穿透到提交按钮的上方，设置z-index在真机上无效<br><img src="https://ae01.alicdn.com/kf/H4e304773bea3445085a8e68758bf6175d.jpg" alt="RUNOOB 图标" loading="lazy"></p>
-<p>解决方法：</p>
-<ul>
-<li>使用if，当触发按钮时隐藏textarea或者input组件，需求完成时在显示input或者textarea</li>
-<li>使用cover-view和cover-image组件代替view、image，cover-view和cover-image组件可以<br>覆盖在部分原生组件上面<h2 id="小程序自定义组件使用动画的坑"><a href="#小程序自定义组件使用动画的坑" class="headerlink" title="小程序自定义组件使用动画的坑"></a>小程序自定义组件使用动画的坑</h2>主包内需要在onReady里面去wx.createAnimation么，但是在自定义组件中要去created中<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">	var animation &#x3D; uni.createAnimation(&#123;</span><br><span class="line">			transformOrigin: &quot;100% 80%&quot;,</span><br><span class="line">	  		duration: 1000,</span><br><span class="line">	   		timingFunction: &#39;ease&#39;,</span><br><span class="line">	&#125;)</span><br><span class="line">	</span><br><span class="line">	this.animation &#x3D; animation</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h2 id="uniapp中js如何动态修改css属性"><a href="#uniapp中js如何动态修改css属性" class="headerlink" title="uniapp中js如何动态修改css属性"></a>uniapp中js如何动态修改css属性</h2><blockquote>
-<p>为节约性能，uniapp将Class与Style的表达式通过compiler硬编码到uni-app中，支持语法和转换效果如下：</p>
-</blockquote>
-<h3 id="class支持语法"><a href="#class支持语法" class="headerlink" title="class支持语法:"></a>class支持语法:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view :class&#x3D;&quot;&#123; active: isActive &#125;&quot;&gt;111&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;static&quot; v-bind:class&#x3D;&quot;&#123; active: isActive, &#39;text-danger&#39;: hasError &#125;&quot;&gt;222&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;static&quot; :class&#x3D;&quot;[activeClass, errorClass]&quot;&gt;333&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;static&quot; v-bind:class&#x3D;&quot;[isActive ? activeClass : &#39;&#39;, errorClass]&quot;&gt;444&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;static&quot; v-bind:class&#x3D;&quot;[&#123; active: isActive &#125;, errorClass]&quot;&gt;555&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="style支持语法"><a href="#style支持语法" class="headerlink" title="style支持语法"></a>style支持语法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view v-bind:style&#x3D;&quot;&#123; color: activeColor, fontSize: fontSize + &#39;px&#39; &#125;&quot;&gt;666&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view v-bind:style&#x3D;&quot;[&#123; color: activeColor, fontSize: fontSize + &#39;px&#39; &#125;]&quot;&gt;777&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="页面中怎么滚动到指定元素"><a href="#页面中怎么滚动到指定元素" class="headerlink" title="页面中怎么滚动到指定元素"></a>页面中怎么滚动到指定元素</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">uni.createSelectorQuery().select(&quot;.app&quot;).boundingClientRect(data&#x3D;&gt;&#123;&#x2F;&#x2F;目标节点</span><br><span class="line">　　uni.createSelectorQuery().select(&quot;.al&quot;).boundingClientRect((res)&#x3D;&gt;&#123;&#x2F;&#x2F;最外层盒子节点</span><br><span class="line">　　　　uni.pageScrollTo(&#123;</span><br><span class="line">　　　　　　duration:0,&#x2F;&#x2F;过渡时间必须为0，uniapp bug，否则运行到手机会报错</span><br><span class="line">　　　　　　scrollTop:res.top - data.top,&#x2F;&#x2F;滚动到实际距离是元素距离顶部的距离减去最外层盒子的滚动距离</span><br><span class="line">　　　　&#125;)</span><br><span class="line">　　&#125;).exec()</span><br><span class="line">&#125;).exec();</span><br></pre></td></tr></table></figure>
-<h2 id="for循环遍历splice删除元素"><a href="#for循环遍历splice删除元素" class="headerlink" title="for循环遍历splice删除元素"></a>for循环遍历splice删除元素</h2><h3 id="遇到的情况："><a href="#遇到的情况：" class="headerlink" title="遇到的情况："></a>遇到的情况：</h3><img src="https://yanxuan.nosdn.127.net/1f6257712afc155b08a422776e591673.jpg" alt="RUNOOB 图标" loading="lazy"><br><img src="https://yanxuan.nosdn.127.net/c36da88230feb8a1fab804ecd7ab916a.jpg" alt="RUNOOB 图标" loading="lazy"><br>使用i++遍历不全，i–却可以<h3 id="最后解决方法："><a href="#最后解决方法：" class="headerlink" title="最后解决方法："></a>最后解决方法：</h3>查询了菜鸟教程的文档，splice方法会改变原数组，使用i++遍历的话，原数组的下标已经发生了改变，<br>所以出现了遍历不全的现象，而i–的话从后往前遍历，原数组的下标并没有改变，所以可以遍历完数组<h2 id="uni开发checkbox复选框全选和全不选功能实现"><a href="#uni开发checkbox复选框全选和全不选功能实现" class="headerlink" title="uni开发checkbox复选框全选和全不选功能实现"></a>uni开发checkbox复选框全选和全不选功能实现</h2><h3 id="遇到情况"><a href="#遇到情况" class="headerlink" title="遇到情况"></a>遇到情况</h3><img src="https://yanxuan.nosdn.127.net/534bade0f28bb1338113ae11ad59fcf6.png" alt="RUNOOB 图标" loading="lazy"><h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3>遍历数组，给每条数据加上一个check=false属性，全选按钮通过改变这个属性的值来实现全选和全部选，<br>具体代码如下：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">html代码</span><br><span class="line">	&lt;view class&#x3D;&quot;itemMid&quot;&gt;</span><br><span class="line">		&lt;checkbox-group @change&#x3D;&quot;singleSelect&quot;&gt;</span><br><span class="line">		&lt;view class&#x3D;&quot;billItem&quot; v-for&#x3D;&quot;(item,index) in courseCollectionArr&quot; :key&#x3D;&quot;index&quot; &gt;</span><br><span class="line">			&lt;checkbox :value&#x3D;&quot;item.id&quot; :checked&#x3D;&quot;item.check&quot; :hidden&#x3D;&quot;!isEdit&quot; &#x2F;&gt;</span><br><span class="line">			&lt;billItem :billItem&#x3D;&quot;item&quot; &gt;&lt;&#x2F;billItem&gt;</span><br><span class="line">		&lt;&#x2F;view&gt;</span><br><span class="line">		&lt;&#x2F;checkbox-group&gt;</span><br><span class="line">	&lt;&#x2F;view&gt;</span><br><span class="line">	&lt;view class&#x3D;&quot;itemBottom&quot;&gt;</span><br><span class="line">		&lt;view class&#x3D;&quot;bottomBar&quot; :hidden&#x3D;&quot;!isEdit&quot;&gt;</span><br><span class="line">			&lt;checkbox-group @change&#x3D;&quot;allSelect&quot;&gt;&lt;checkbox value&#x3D;&quot;all&quot; :checked&#x3D;&quot;checkkAll&quot;&gt;全选&lt;&#x2F;checkbox&gt;&lt;&#x2F;checkbox-group&gt;</span><br><span class="line">			&lt;button type&#x3D;&quot;warn&quot; class&#x3D;&quot;cancelBtn&quot;&gt;取消收藏&lt;&#x2F;button&gt;</span><br><span class="line">		&lt;&#x2F;view&gt;</span><br><span class="line">	&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">js代码</span><br><span class="line">	data() &#123;</span><br><span class="line">		return &#123;</span><br><span class="line">			courseCollectionArr:[],</span><br><span class="line">			selectGoods:true,</span><br><span class="line">			selectStore:false,</span><br><span class="line">			isEdit:false,</span><br><span class="line">			cancelId:[],</span><br><span class="line">			checkkAll:false,</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	 &lt;!-- 选择单个 --&gt;</span><br><span class="line">		singleSelect(e)&#123;</span><br><span class="line">			this.cancelId&#x3D;e.detail.value</span><br><span class="line">			console.log(this.cancelId)</span><br><span class="line">		&#125;,</span><br><span class="line">		&lt;!-- 全选 --&gt;</span><br><span class="line">		allSelect(e)&#123;</span><br><span class="line">			if(e.detail.value&#x3D;&#x3D;&quot;all&quot;)&#123;</span><br><span class="line">				this.ckAll &#x3D; true;</span><br><span class="line">				this.courseCollectionArr.forEach((item)&#x3D;&gt;&#123;</span><br><span class="line">					item.check &#x3D; this.ckAll</span><br><span class="line">					var idStr&#x3D;item.id.toString()</span><br><span class="line">					&#x2F;&#x2F; 去重</span><br><span class="line">					if(this.cancelId.includes(idStr))&#123;</span><br><span class="line">						console.log(&quot;重复id&quot;)</span><br><span class="line">					&#125;else&#123;</span><br><span class="line">						this.cancelId.push(idStr)</span><br><span class="line">					&#125;</span><br><span class="line">					console.log(this.cancelId)</span><br><span class="line">				&#125;)</span><br><span class="line">				</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				this.ckAll &#x3D; false;</span><br><span class="line">				this.courseCollectionArr.map(item &#x3D;&gt; item.check &#x3D; this.ckAll);</span><br><span class="line">				this.cancelId&#x3D;[]</span><br><span class="line">				console.log(this.cancelId)</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端项目</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2020前端面试题（html篇）</title>
-    <url>/2020/06/24/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98(HTML)/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js"></script><h2 id="说一下标签的用法"><a href="#说一下标签的用法" class="headerlink" title="说一下标签的用法"></a>说一下<label>标签的用法</h2><pre><code>label标签主要是方便鼠标点击使用，扩大可点击范围，增强用户体验</code></pre><h2 id="1、http和https的区别"><a href="#1、http和https的区别" class="headerlink" title="1、http和https的区别"></a>1、http和https的区别</h2><p>   http传输的数据是明文的(未加密)，而https协议室友http和ssl协议构建的可进行加密传输和身份<br>认证的网络协议，比http协议安全性更高。主要区别：</p>
-<ul>
-<li>一、https协议需要ca证书，费用较高</li>
-<li>二、http为明文传输，https为ssl加密传输协议(更安全)</li>
-<li>三、http的连接很简单，是无状态的；https协议是由ssl+http协议构建的可进行加密传输、身份认证的协议，更安全</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端基础</category>
-      </categories>
-      <tags>
-        <tag>面试题</tag>
-        <tag>前端</tag>
-        <tag>html</tag>
       </tags>
   </entry>
 </search>
